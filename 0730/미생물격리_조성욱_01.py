@@ -51,3 +51,8 @@ for test_case in range(1, T + 1):
 		res += micro_num
 
 	print(micro_num)
+
+
+	for a in b:
+		a는 복사해온 것.
+		a를 컨트롤해도 b는 바꾸지 못함
