@@ -7,6 +7,7 @@
 # 그냥 완전 탐색?
 # n과 m의 범위가 작다 = DFS로 벽 하나하나 세워보기 가능
 # DFS로 벽 하나하나 세우고 BFS 돌리고 남은 애들 갯수 세아리기?
+
 import copy
 from collections import deque
 
@@ -43,17 +44,17 @@ def bfs(arr2):
     answer = max(answer, count)
 
 
-def dfs(depth, i, j):
+def dfs(depth):
     if depth == 3:
         arr2 = copy.deepcopy(arr)
         bfs(arr2)
         return
 
-    for ii in range(i, n):
-        for jj in range(j + 1, m):
+    for ii in range(n):
+        for jj in range(m):
             if arr[ii][jj] == 0:
                 arr[ii][jj] = 1
-                dfs(depth+1, ii, jj)
+                dfs(depth+1)
                 arr[ii][jj] = 0
 
 
@@ -67,8 +68,6 @@ for i in range(n):
         if arr[i][j] == 2:
             vi_pos.append((i, j))
 
-for i in range(n):
-    for j in range(m):
-        dfs(0, i, j)
+dfs(0)
 
 print(answer)
