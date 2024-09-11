@@ -26,9 +26,9 @@ def dfs(cxy):
 
     if cnt_list[cx][cy] != 0:        return True  # 4방향중 연결된 곳 있다면 True 반환 
     else:
-        if cx == 0 and cy == 0:  # 시작 지점까지 끌고왔는데 0이다? 연결된 경로가 없다. 
-            cnt_list[0][0] = 0
-            return
+        # if cx == 0 and cy == 0:  # 시작 지점까지 끌고왔는데 0이다? 연결된 경로가 없다. 
+        #     cnt_list[0][0] = 0
+        #     return
         
         # 시작 지점 아닌데 4방향 봤는데도 0 -> 연결된 곳 없다 -> -1로 설정
         cnt_list[cx][cy] = -1   
@@ -41,6 +41,6 @@ maps = [list(map(int, input().split())) for _ in range(m)]
 cnt_list = [[0] * n for _ in range(m)]  # 초기값 0 
 
 dfs((0, 0))
-
+print(cnt_list)
 print(cnt_list[0][0])
 
