@@ -81,7 +81,8 @@ while True:
                 valid = False
                 break
             temp += dist
-
+            if temp > count:
+                break
         if valid:
             count = min(count, temp)
 
