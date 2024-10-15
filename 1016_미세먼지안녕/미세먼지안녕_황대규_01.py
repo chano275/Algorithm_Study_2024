@@ -45,14 +45,15 @@ for _ in range(t):
         next_arr[i][c-1] = arr[i+1][c-1]
 
     # 공기청정기 위쪽 왼쪽으로 밀기
-    for i in range(c-2):
+    for i in range(c-1):
         next_arr[0][i] = arr[0][i+1]
 
     # 공기청정기 위쪽 아래쪽으로 밀기
     for i in range(1, air_purifier_pos):
         next_arr[i][0] = arr[i-1][0]
 
-
+#------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------
     # 공기청정기 아래쪽 앞으로 밀기
     next_arr[air_purifier_pos+1][1] = 0
     for i in range(2, c):
@@ -61,12 +62,18 @@ for _ in range(t):
     # 공기청정기 아래쪽 밑으로 내리기
     for i in range(air_purifier_pos+2, r):
         next_arr[i][c-1] = arr[i-1][c-1]
+
     # 공기청정기 아래쪽 왼쪽으로 밀기
-    for i in range(c-2):
+    for i in range(c-1):
         next_arr[r-1][i] = arr[r-1][i+1]
 
     # 공기청정기 아래쪽 위로 밀기
-    for i in range(2, r-air_purifier_pos+1):
-        next_arr[c-1-i][0] = arr[c-i][0]
+    for i in range(1,r-(air_purifier_pos+2)):
+        next_arr[r-1-i][0] = arr[r-i][0]
 
-    print(next_arr)
+    arr = [next_arr[_][:] for _ in range(r)]
+
+answer = 2
+for i in range(r):
+    answer += sum(arr[i])
+print(answer)
